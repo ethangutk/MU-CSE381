@@ -1,0 +1,4 @@
+cse278,Systems 1,054,Rao
+cse301,Software Architecture,103,Kiper
+cse381,Systems 2,054,Johnson
+cse443,High Performance Computing,054,Rao

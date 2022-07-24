@@ -1,0 +1,7 @@
+Fall17,cse278,054
+Fall17,cse278,112
+Fall17,cse301,103
+Fall17,cse443,112
+Spring18,cse278,054
+Spring18,cse301,103
+Spring18,cse381,112
