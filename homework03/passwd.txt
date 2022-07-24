@@ -1,0 +1,14 @@
+root:xx:0:0:root:/root:/bin/bash
+bin:x:1:1:bin:/bin:/sbin/nologin
+raodm:xyz:1000:1000:DJ Rao:/home/raodm:/bin/bash
+campbest:xxxxx:1001:1001:Scott Campbell:/home/campbest:/bin/bash
+lewisjp3:x:1002:1002:John Lewis:/home/lewisjp3:/bin/tcsh
+kiperjd:xooo:1003:1003:Jim Kiper:/home/kiperjd:/bin/ksh
+raychov:xp:1004:1004:Vaskar Raychoudhury:/home/raychov:/bin/ksh
+bachmaer:x:2000:2000:Eric Bachmann:/home/bachmaer:/bin/bash
+inclezd:x:1500:2000:Daniela Inclezan:/home/inclezd:/bin/bash
+davisk4:x:2001:2001:Karen Davis:/home/davisk4:/bin/bash
+femianjc:xya1234:2002:2002:John Femiani:/home/femianjc:/bin/bash
+crossv:x:2010:2010:Valerie Cross:/home/crossv:/bin/bash
+castroa:1111:2011:2011:Castro-Hernandez Alberto:/home/castroa:/bin/tcsh
+ahmede:x:2012:2012:Emdad Ahmed:/home/ahmede:/bin/bash
