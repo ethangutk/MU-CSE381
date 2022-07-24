@@ -1,0 +1,37 @@
+# Block 0: Load up the CSVs for our use
+"use test.csv;"
+"Loaded test.csv
+"
+"use airports.csv;"
+"Loaded airports.csv
+"
+"run" 1 1
+
+# ------------------------------------------------------------
+# Run multiple updates from independent threads
+"update test.csv set rating=5, raters=5 where movieid <> 1234;" 
+"5 row(s) updated.
+"
+"update test.csv set rating=2.5, raters=5 where movieid=193579;"
+"1 row(s) updated.
+"
+"update test.csv set rating=3.35, raters=7 where title like 'The';"
+"2 row(s) updated.
+"
+"update test.csv set rating=3.5, raters=1 where movieid=1234;"
+"0 row(s) updated.
+"
+"select * from test.csv where movieid=1234;"
+"0 row(s) selected.
+"
+"select * from test.csv where title like 'blah';"
+"0 row(s) selected.
+"
+"select name, city, country from airports.csv where name like 'Cin';"
+"name	city	country
+Cincinnati Northern Kentucky International Airport	Cincinnati	United States
+Cincinnati Municipal Airport Lunken Field	Cincinnati	United States
+2 row(s) selected.
+"
+"run" 7 10
+

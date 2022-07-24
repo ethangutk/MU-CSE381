@@ -1,0 +1,75 @@
+# A set of multithreaded operations to test the functionality of 
+# wait select and wait update statements
+#
+# first load the data files we will use as loading is not MT-safe
+"use test.csv;"
+"Loaded test.csv
+"
+"use movies_db_20.csv;"
+"Loaded movies_db_20.csv
+"
+"use airports.csv"
+"Loaded airports.csv
+"
+run 1 1
+
+# -----------------------------------------------------------
+# The next 3 queries are run by 3 threads. These update statements
+# should not need to wait at all.
+"wait update test.csv set year=2006 where movieid = 46850;"
+"1 row(s) updated.
+"
+"wait update movies_db_20.csv set year=2006 where movieid = 46850;"
+"1 row(s) updated.
+"
+"run" 2 2
+
+# -----------------------------------------------------------
+# Now run a couple of wait update statements that wlll need to wait
+# for the data to be updated
+"wait update test.csv set raters=2 where raters=2;"
+"2 row(s) updated.
+"
+"wait update airports.csv set timezone='America/NewYork' where dst='B';"
+"2 row(s) updated.
+"
+"nowait" 2 1
+
+# -----------------------------------------------------------
+# Now run a couple of wait update statements that wlll need to wait
+# for the data to be updated
+"wait update test.csv set raters=2 where raters=2;"
+"2 row(s) updated.
+"
+"wait update airports.csv set timezone='America/NewYork' where dst='B';"
+"2 row(s) updated.
+"
+"nowait" 2 1
+
+# -----------------------------------------------------------
+# Now update pertinent rows so updates can complete.
+"update test.csv set rating=3.25, raters=2 where rating like 3.;"
+"2 row(s) updated.
+"
+"update airports.csv set dst='B' where name like 'Cin';"
+"2 row(s) updated.
+"
+"run" 2 1
+
+
+# -----------------------------------------------------------
+# Now do a select to ensure the waited updates happend
+"select * from test.csv where raters=2;"
+"movieid	title	year	genres	imdbid	rating	raters
+193579	Jon Stewart Has Left the Building	2015	Documentary	5342766	3.25	2
+46559	Road to Guantanamo, The	2006	Drama|War	468094	3.25	2
+2 row(s) selected.
+"
+"select iata, timezone, dst from airports.csv where name like 'Cin';"
+"iata	timezone	dst
+CVG	America/NewYork	B
+LUK	America/NewYork	B
+2 row(s) selected.
+"
+"run" 1 1
+

@@ -1,0 +1,72 @@
+# Test a update statement that updates all the rows
+"update test.csv set rating=5, raters=5;" 
+"5 row(s) updated.
+"
+"select *;"
+"movieid	title	year	genres	imdbid	rating	raters
+193579	Jon Stewart Has Left the Building	2015	Documentary	5342766	5	5
+176389	The Nut Job 2: Nutty by Nature	2017	Adventure|Animation|Children|Comedy	3486626	5	5
+98491	Paperman	2012	Animation|Comedy|Romance	2388725	5	5
+46559	Road to Guantanamo, The	2006	Drama|War	468094	5	5
+46850	Wordplay	2006	Documentary	492506	5	5
+5 row(s) selected.
+"
+"run" 1 3
+
+# ------------------------------------------------------------
+# Block 1: Next, test an update statement with a condition
+"update test.csv set rating=2.5, raters=5 where movieid=193579;"
+"1 row(s) updated.
+"
+"select *;"
+"movieid	title	year	genres	imdbid	rating	raters
+193579	Jon Stewart Has Left the Building	2015	Documentary	5342766	2.5	5
+176389	The Nut Job 2: Nutty by Nature	2017	Adventure|Animation|Children|Comedy	3486626	5	5
+98491	Paperman	2012	Animation|Comedy|Romance	2388725	5	5
+46559	Road to Guantanamo, The	2006	Drama|War	468094	5	5
+46850	Wordplay	2006	Documentary	492506	5	5
+5 row(s) selected.
+"
+"run" 1 3
+
+# ------------------------------------------------------------
+# Block 2: Next, test an update statement with a different condition
+"update test.csv set rating=3.35, raters=7 where title like 'The';"
+"2 row(s) updated.
+"
+"select *;"
+"movieid	title	year	genres	imdbid	rating	raters
+193579	Jon Stewart Has Left the Building	2015	Documentary	5342766	2.5	5
+176389	The Nut Job 2: Nutty by Nature	2017	Adventure|Animation|Children|Comedy	3486626	3.35	7
+98491	Paperman	2012	Animation|Comedy|Romance	2388725	5	5
+46559	Road to Guantanamo, The	2006	Drama|War	468094	3.35	7
+46850	Wordplay	2006	Documentary	492506	5	5
+5 row(s) selected.
+"
+"run" 1 3
+
+# ------------------------------------------------------------
+# Next, test update statements with conditions to update selected rows
+"update test.csv set rating=3.5, raters=1 where movieid=193579;"
+"1 row(s) updated.
+"
+"update test.csv set rating=3.5, raters=1 where movieid=1234;"
+"0 row(s) updated.
+"
+"update test.csv set rating=4.375, raters=8 where year=2012;"
+"1 row(s) updated.
+"
+"update test.csv set rating=4, raters=3 where title='Wordplay';"
+"1 row(s) updated.
+"
+"select *;"
+"movieid	title	year	genres	imdbid	rating	raters
+193579	Jon Stewart Has Left the Building	2015	Documentary	5342766	3.5	1
+176389	The Nut Job 2: Nutty by Nature	2017	Adventure|Animation|Children|Comedy	3486626	3.35	7
+98491	Paperman	2012	Animation|Comedy|Romance	2388725	4.375	8
+46559	Road to Guantanamo, The	2006	Drama|War	468094	3.35	7
+46850	Wordplay	2006	Documentary	492506	4	3
+5 row(s) selected.
+"
+"run" 1 3
+

@@ -1,0 +1,127 @@
+# A set of multithreaded operations to test the functionality of 
+# wait select and wait update statements
+#
+# first load the data files we will use as loading is not MT-safe
+"use test.csv;"
+"Loaded test.csv
+"
+"use movies_db_20.csv;"
+"Loaded movies_db_20.csv
+"
+"use airports.csv"
+"Loaded airports.csv
+"
+run 1 1
+
+# -----------------------------------------------------------
+# The next 3 queries are run by 3 threads. These select statements
+# should not need to wait at all.
+# Test a simple select statement.
+"wait select title from test.csv;" 
+"title
+Jon Stewart Has Left the Building
+The Nut Job 2: Nutty by Nature
+Paperman
+Road to Guantanamo, The
+Wordplay
+5 row(s) selected.
+"
+
+# test select with multiple columns
+"wait select title, year from movies_db_20.csv where title like The;" 
+"title	year
+Jon Stewart Has Left the Building	2015
+All the King's Men	2006
+2 row(s) selected.
+"
+
+# test select with another data set 
+"wait select name, city, country from airports.csv where name like 'Cin';"
+"name	city	country
+Cincinnati Northern Kentucky International Airport	Cincinnati	United States
+Cincinnati Municipal Airport Lunken Field	Cincinnati	United States
+2 row(s) selected.
+"
+"run" 3 5
+
+# -----------------------------------------------------------
+# Now run a few select statements that will need to wait for some data to be updated
+# before they can complete successfully.
+"wait select * from test.csv where raters = 2;"
+"movieid	title	year	genres	imdbid	rating	raters
+193579	Jon Stewart Has Left the Building	2015	Documentary	5342766	3.25	2
+1 row(s) selected.
+"
+"wait select * from movies_db_20.csv where rating like '1.';"
+"movieid	title	year	genres	imdbid	rating	raters
+47810	Wicker Man, The	2006	Horror|Mystery|Thriller	450345	1.5	4
+48322	Jackass Number Two	2006	Comedy|Documentary	493430	1.5	7
+189547	Iron Soldier	2010	Action|Sci-Fi	1665744	1.5	1
+3 row(s) selected.
+"
+"wait select title, year from movies_db_20.csv where title like The;" 
+"title	year
+Jon Stewart Has Left the Building	2015
+All the King's Men	2006
+2 row(s) selected.
+"
+# Run 1 reps with 3-threads. Don't wait for threads to finish
+"nowait" 3 1
+
+# -----------------------------------------------------------
+# Now run a few select statements that will need to wait for some data to be updated
+# before they can complete successfully.
+"wait select * from test.csv where raters = 2;"
+"movieid	title	year	genres	imdbid	rating	raters
+193579	Jon Stewart Has Left the Building	2015	Documentary	5342766	3.25	2
+1 row(s) selected.
+"
+"wait select * from movies_db_20.csv where rating like '1.';"
+"movieid	title	year	genres	imdbid	rating	raters
+47810	Wicker Man, The	2006	Horror|Mystery|Thriller	450345	1.5	4
+48322	Jackass Number Two	2006	Comedy|Documentary	493430	1.5	7
+189547	Iron Soldier	2010	Action|Sci-Fi	1665744	1.5	1
+3 row(s) selected.
+"
+"wait select title, year from movies_db_20.csv where title like The;" 
+"title	year
+Jon Stewart Has Left the Building	2015
+All the King's Men	2006
+2 row(s) selected.
+"
+# Run another rep of requests but not waiting for threads to finish
+"nowait" 3 1
+
+# -----------------------------------------------------------
+# Block 4: Update some unrelated row in the table
+"update test.csv set year=2006 where movieid = 46850;"
+"1 row(s) updated.
+"
+"update movies_db_20.csv set year=2006 where movieid = 46850;"
+"1 row(s) updated.
+"
+"run" 2 2
+
+# -----------------------------------------------------------
+# Now update pertinent rows so selects can complete.
+"update test.csv set rating=3.25, raters=2 where movieid=193579;"
+"1 row(s) updated.
+"
+"run" 1 1
+
+# -----------------------------------------------------------
+# Now update pertinent rows so selects can complete.
+"update movies_db_20.csv set rating=1.5 where rating like 1;"
+"3 row(s) updated.
+"
+"run" 1 1
+
+# Run some selects to check on things
+"wait select name, city, country from airports.csv where name like 'Cin';"
+"name	city	country
+Cincinnati Northern Kentucky International Airport	Cincinnati	United States
+Cincinnati Municipal Airport Lunken Field	Cincinnati	United States
+2 row(s) selected.
+"
+"run" 3 5
+

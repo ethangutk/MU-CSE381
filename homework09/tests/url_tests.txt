@@ -1,0 +1,49 @@
+# Test with multiple columns and url
+"select employee,customer,sales from 'http://ceclnx01.cec.miamioh.edu/~raodm/sqlair/sales.csv' where employee like 'Ron';"
+"employee	customer	sales
+Ron Mc\"Gee	Abercrombie & Fitch	2952
+Ron Mc\"Gee	Abercrombie & Fitch	9030
+Ron Mc\"Gee	AK Steel Holding	6555
+Ron Mc\"Gee	AK Steel Holding	8217
+Ron Mc\"Gee	Armored Trunk Manufacturing Company	1363
+Ron Mc\"Gee	Abercrombie & Fitch	3834
+Ron Mc\"Gee	Abercrombie & Fitch	4072
+Ron Mc\"Gee	Acme Fresh Market	8385
+Ron Mc\"Gee	Armored Trunk Manufacturing Company	9726
+9 row(s) selected.
+"
+"run" 1 1
+
+# test select with wilcard and url
+"select * from 'http://ceclnx01.cec.miamioh.edu/~raodm/sqlair/stocks.csv' where market = 'nasdaq';"
+"symbol	name	market	price	volume
+AMD	Advanced Micro Devices Inc	nasdaq	78.46	95800000
+TSLA	Tesla Inc	nasdaq	637.30	115900000
+MSFT	Microsoft Corp.	nasdaq	230.38	95800000
+NOK	Nokia Corp. ADR	nasdaq	4	114600000
+INTC	Intel Corp.	nasdaq	63.79	76100000
+FB	Facebook Inc. CI A	nasdaq	288.31	85400000
+AAPL	Apple Inc.	nasdaq	120.23	352900000
+7 row(s) selected.
+"
+"run" 1 1
+
+# test from a different url
+"select * from 'http://www.users.miamioh.edu/raodm/courses/tz.csv' where country = 'AU';"
+"country	zone	gmt	dst	raw
+AU	Antarctica/Macquarie	11	10	10
+AU	Australia/Adelaide	10.5	9.5	9.5
+AU	Australia/Brisbane	10	10	10
+AU	Australia/Broken_Hill	10.5	9.5	9.5
+AU	Australia/Currie	11	10	10
+AU	Australia/Darwin	9.5	9.5	9.5
+AU	Australia/Eucla	8.75	8.75	8.75
+AU	Australia/Hobart	11	10	10
+AU	Australia/Lindeman	10	10	10
+AU	Australia/Lord_Howe	11	10.5	10.5
+AU	Australia/Melbourne	11	10	10
+AU	Australia/Perth	8	8	8
+AU	Australia/Sydney	11	10	10
+13 row(s) selected.
+"
+"run" 1 1
