@@ -1,0 +1,10 @@
+GET /cgi-bin/exec?cmd=sleep+++++4 HTTP/1.1
+Host: localhost:80
+Connection: keep-alive
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Encoding: gzip, deflate, sdch
+Accept-Language: en-US,en;q=0.8
+Cache-Control: no-cache
+Cookie: none
+Pragma: no-cache
+

@@ -1,0 +1,44 @@
+HTTP/1.1 200 OK
+Transfer-Encoding: chunked
+Connection: Close
+Content-Type: text/html
+
+156
+<html>
+  <head>
+    <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+    <script type='text/javascript' src='/draw_chart.js'></script>
+    <link rel='stylesheet' type='text/css' href='/mystyle.css'>
+  </head>
+
+  <body>
+    <h3>Output from program</h3>
+    <textarea style='width: 700px; height: 200px'>
+
+d
+Exit code: 0
+
+281
+     </textarea>
+     <h2>Runtime statistics</h2>
+     <table>
+       <tr><th>Time (sec)</th><th>User time</th><th>System time</th><th>Memory (MB)</th></tr>
+       <tr><td>1</td><td>0</td><td>0</td><td>7</td></tr>
+       <tr><td>2</td><td>0</td><td>0</td><td>7</td></tr>
+       <tr><td>3</td><td>0</td><td>0</td><td>7</td></tr>
+     </table>
+     <div id='chart' style='width: 900px; height: 500px'></div>
+  </body>
+  <script type='text/javascript'>
+    function getChartData() {
+      return google.visualization.arrayToDataTable(
+        [
+          ['Time (sec)', 'CPU Usage', 'Memory Usage']
+        ]
+      );
+    }
+  </script>
+</html>
+
+0
+

@@ -1,0 +1,115 @@
+HTTP/1.1 200 OK
+Content-Type: text/html
+Transfer-Encoding: chunked
+Connection: Close
+
+156
+<html>
+  <head>
+    <script type='text/javascript' src='https://www.gstatic.com/charts/loader.js'></script>
+    <script type='text/javascript' src='/draw_chart.js'></script>
+    <link rel='stylesheet' type='text/css' href='/mystyle.css'>
+  </head>
+
+  <body>
+    <h3>Output from program</h3>
+    <textarea style='width: 700px; height: 200px'>
+
+1b
+Using CPU for computation.
+
+1d
+Using memory for operations.
+
+20
+Performing some I/O operations.
+
+1b
+Using CPU for computation.
+
+1d
+Using memory for operations.
+
+20
+Performing some I/O operations.
+
+10
+
+Exit code: 0
+
+c2f
+     </textarea>
+     <h2>Runtime statistics</h2>
+     <table>
+       <tr><th>Time (sec)</th><th>User time</th><th>System time</th><th>Memory (KB)</th></tr>
+       <tr><td>1</td><td>1</td><td>0</td><td>14356</td></tr>
+       <tr><td>2</td><td>2</td><td>0</td><td>14356</td></tr>
+       <tr><td>3</td><td>2.55</td><td>0</td><td>22749</td></tr>
+       <tr><td>4</td><td>2.55</td><td>0</td><td>22749</td></tr>
+       <tr><td>5</td><td>2.55</td><td>0</td><td>31137</td></tr>
+       <tr><td>6</td><td>2.55</td><td>0</td><td>31137</td></tr>
+       <tr><td>7</td><td>2.55</td><td>0</td><td>47915</td></tr>
+       <tr><td>8</td><td>2.55</td><td>0</td><td>47915</td></tr>
+       <tr><td>9</td><td>2.56</td><td>0.44</td><td>14356</td></tr>
+       <tr><td>10</td><td>2.56</td><td>1.43</td><td>14356</td></tr>
+       <tr><td>11</td><td>2.56</td><td>2.43</td><td>14356</td></tr>
+       <tr><td>12</td><td>2.57</td><td>3.42</td><td>14356</td></tr>
+       <tr><td>13</td><td>2.58</td><td>4.41</td><td>14356</td></tr>
+       <tr><td>14</td><td>2.8</td><td>5.19</td><td>14356</td></tr>
+       <tr><td>15</td><td>3.8</td><td>5.19</td><td>14356</td></tr>
+       <tr><td>16</td><td>4.8</td><td>5.19</td><td>14356</td></tr>
+       <tr><td>17</td><td>5.09</td><td>5.19</td><td>22831</td></tr>
+       <tr><td>18</td><td>5.09</td><td>5.19</td><td>22831</td></tr>
+       <tr><td>19</td><td>5.09</td><td>5.19</td><td>39608</td></tr>
+       <tr><td>20</td><td>5.09</td><td>5.19</td><td>39608</td></tr>
+       <tr><td>21</td><td>5.09</td><td>5.19</td><td>73166</td></tr>
+       <tr><td>22</td><td>5.09</td><td>5.19</td><td>73166</td></tr>
+       <tr><td>23</td><td>5.09</td><td>5.91</td><td>39608</td></tr>
+       <tr><td>24</td><td>5.09</td><td>6.91</td><td>39608</td></tr>
+       <tr><td>25</td><td>5.09</td><td>7.9</td><td>39608</td></tr>
+       <tr><td>26</td><td>5.1</td><td>8.89</td><td>39608</td></tr>
+       <tr><td>27</td><td>5.12</td><td>9.88</td><td>39608</td></tr>
+       <tr><td>28</td><td>5.12</td><td>10.5</td><td>0</td></tr>
+     </table>
+     <div id='chart' style='width: 900px; height: 500px'></div>
+  </body>
+  <script type='text/javascript'>
+    function getChartData() {
+      return google.visualization.arrayToDataTable(
+        [
+          ['Time (sec)', 'CPU Usage', 'Memory Usage'],
+          [1, 1, 14356],
+          [2, 2, 14356],
+          [3, 2.55, 22749],
+          [4, 2.55, 22749],
+          [5, 2.55, 31137],
+          [6, 2.55, 31137],
+          [7, 2.55, 47915],
+          [8, 2.55, 47915],
+          [9, 3, 14356],
+          [10, 3.99, 14356],
+          [11, 4.99, 14356],
+          [12, 5.99, 14356],
+          [13, 6.99, 14356],
+          [14, 7.99, 14356],
+          [15, 8.99, 14356],
+          [16, 9.99, 14356],
+          [17, 10.28, 22831],
+          [18, 10.28, 22831],
+          [19, 10.28, 39608],
+          [20, 10.28, 39608],
+          [21, 10.28, 73166],
+          [22, 10.28, 73166],
+          [23, 11, 39608],
+          [24, 12, 39608],
+          [25, 12.99, 39608],
+          [26, 13.99, 39608],
+          [27, 15, 39608],
+          [28, 15.62, 0]
+        ]
+      );
+    }
+  </script>
+</html>
+
+0
