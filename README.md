@@ -19,8 +19,7 @@ Have any questions about anything? Feel free to reach out to me!
 <table align="center">
   <tr>
     <td>
-<h6 align="center">DISCLAIMER:<br>I do NOT allow copying or referencing of this repository for academic benefits at Miami <br>
-University. Any found violations of <a href="https://miamioh.edu/policy-library/students/undergraduate/academic-regulations/academic-integrity.html">Miami University's Academic Integrity policy</a> will be reported.</h6>
+<h6 align="center">DISCLAIMER:<br>I do NOT allow copying or referencing of this repository for academic benefits at Miami University. <br><br> Any found violations of <a href="https://miamioh.edu/policy-library/students/undergraduate/academic-regulations/academic-integrity.html">Miami University's Academic Integrity policy</a> will be reported.</h6>
     </td>
   </tr>
 </table>
